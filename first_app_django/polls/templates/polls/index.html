@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Django Polls</title>
+        <meta name='viewport' content='width=device-width, initial-scale=1'>
+    </head>
+    <body>
+        {% if latest_question_list %}
+        <ul>
+            {% for question in latest_question_list %}
+            <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+            {% endfor %}
+        </ul>
+            {% else %}
+        <p>No polls are available.</p>
+        {% endif %}
+    </body>
+</html>
+
+
+<!--
+    podria ir en la linea #12 esto <li><a href="/polls/{{ question.id }}/">{{ question.question_text }}</a></li>
+    El problema con este método de codificación predeterminada y estrechamente acoplada es que se hace difícil modificar las URLs en proyectos que 
+    tengan muchas plantillas. Sin embargo, puesto que usted definió el argumento de nombre en las funciones path() en el módulo polls.urls, usted 
+    puede eliminar la dependencia en rutas URL específicas definida en su configuración de URL usando la etiqueta de plantilla {% url %}:
+    <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+
+    Si desea modificar la URL de la vista de detalle de las encuestas a algo diferente, quizás a algo como polls/specifics/12/, en lugar de hacerlo
+    en la plantilla (o plantillas), usted la modificaría en polls/urls.py:
+    path('specifics/<int:question_id>/', views.detail, name='detail'),
+ -->
