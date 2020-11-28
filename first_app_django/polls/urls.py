@@ -7,11 +7,11 @@ urlpatterns = [
     #url base: http://localhost:8000/polls
     
     #ex: /
-    path('', views.index, name='index'), 
+    path('', views.IndexView.as_view(), name='index'),  # esto es una vista generica
     #ex: /5/
-    path('<int:question_id>/', views.detail, name='detail'), #question_id es enviado como parametro a views.detail
+    path('<int:pk>/', views.DetailView.as_view(), name='detail'), #question_id es enviado como parametro a views.detail, esto es una vista generica
     # ex: /5/results/
-    path('<int:question_id>/results/', views.results, name='results'), #question_id es enviado como parametro a views.results
+    path('<int:pk>/results/', views.ResultsView.as_view(), name='results'), #question_id es enviado como parametro a views.results, esto es una vista generica
     # ex: /5/vote/
     path('<int:question_id>/vote/', views.vote, name='vote'), #question_id es enviado como parametro a views.vote
     ]
