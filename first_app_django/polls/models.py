@@ -14,7 +14,8 @@ class Question(models.Model):
         return self.question_text
     
     def was_published_recently(self):
-        return self.pub_date >= timezone.now() - datetime.timedelta(days=1)
+        now = timezone.now()
+        return now - datetime.timedelta(days=1) <= self.pub_date <= now
 
 
 # basicamente creamos una tabla polls.choice (nombre del app + nombre del modelo) con 2 columnas, question, choice_text y vores
