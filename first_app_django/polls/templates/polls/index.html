@@ -4,6 +4,8 @@
         <meta charset="UTF-8">
         <title>Django Polls</title>
         <meta name='viewport' content='width=device-width, initial-scale=1'>
+        {% load static %} <!--Esta etiqueta de plantilla genera la URL absoluta de los archivos estáticos.-->
+        <link rel="stylesheet" type="text/css" href="{% static 'polls/style.css' %}">
     </head>
     <body>
         {% if latest_question_list %}
